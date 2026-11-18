@@ -8,10 +8,11 @@ At work I've been building things like:
 - a matching pipeline where rules go first, a local LLM (Qwen on Ollama) only gets the cases the rules can't decide, and anything still uncertain goes to a person whose answer the system remembers next time
 - the admin console and access management for an ISO 27001 compliant SSO system, plus the integration work around its OAuth2 gateway
 
-That code belongs to my employer, so the repos below are my own rewrites of the same ideas, written from scratch with made-up data.
+The repos below are cleaned-up versions of that work or my own rewrites of the same ideas, all with made-up data and nothing that belongs to the original organisation.
 
 **Backend / data**
 
+- [unit-matcher](https://github.com/Omercanbasboga/unit-matcher) · messy unit names -> one official org tree: rules first, a local LLM for the unsure cases, a review loop it learns from (Python, Ollama, PostgreSQL)
 - [monitoring-hub](https://github.com/Omercanbasboga/monitoring-hub) · one API over four very different sensor feeds (Spring Boot, Spring Batch, PostgreSQL)
 - [minmax-lttb-downsampler](https://github.com/Omercanbasboga/minmax-lttb-downsampler) · shrink 30k points to 300 without losing the spike you actually care about
 - [sso-gateway-bff](https://github.com/Omercanbasboga/sso-gateway-bff) · reactive OAuth2/OIDC backend-for-frontend (Spring Cloud Gateway)
@@ -29,6 +30,6 @@ That code belongs to my employer, so the repos below are my own rewrites of the 
 - [hollowmere](https://omercanbasboga.github.io/hollowmere/) · match-3 where you seal monsters, with a small [live-ops config service](https://github.com/Omercanbasboga/hollowmere-liveops)
 - [hollowmere-vigil](https://omercanbasboga.github.io/hollowmere-vigil/) · short branching text adventure in the same world
 
-Java · Spring Boot · Spring Batch · PostgreSQL · Redis · React · Node.js · Docker · Ollama
+Java · Spring Boot · Spring Batch · Python · PostgreSQL · Redis · MongoDB · React · Node.js · Docker · Ollama
 
 [Website](https://omercanbasboga.github.io) · [LinkedIn](https://www.linkedin.com/in/%C3%B6mer-can-ba%C5%9Fbo%C4%9Fa-b7940223a)
