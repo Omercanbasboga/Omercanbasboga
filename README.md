@@ -1,37 +1,64 @@
-### Hi, I'm Ömer
+<picture>
+  <source media="(prefers-color-scheme: dark)" srcset="assets/banner-dark.svg">
+  <img alt="Ömer Can Başboğa, full-stack developer in Istanbul. Java and Spring Boot, React, and data that shows up messy from five places at once." src="assets/banner-light.svg" width="100%">
+</picture>
 
-Full-stack developer in Istanbul. Most of my work is Java 21 / Spring Boot on the backend and React on the front, usually around data that arrives messy from several places and has to end up clean, queryable and on a chart.
+Most of what I've built at work is internal tooling other teams end up relying on: a sea-level monitoring service that pulls from five outside networks, the admin side of an ISO 27001 single sign-on system, a student club system with a two-signature approval flow, and a matching pipeline where a local LLM only gets the cases the rules can't decide.
 
-At work I've been building things like:
+The repos here are my own rewrites of that work with made-up data, so they can be public. Four of them run in your browser.
 
-- a sea-level monitoring service that pulls from five outside sources (REST, CSV, FTP, one custom binary format), stores it in PostgreSQL and serves it fast enough to chart years of data
-- a matching pipeline where rules go first, a local LLM (Qwen on Ollama) only gets the cases the rules can't decide, and anything still uncertain goes to a person whose answer the system remembers next time
-- the admin console and access management for an ISO 27001 compliant SSO system, plus the integration work around its OAuth2 gateway
+**[Website](https://omercanbasboga.github.io)**, **[CV](https://omercanbasboga.github.io/assets/OmerCanBasboga_CV.pdf)**, **[LinkedIn](https://www.linkedin.com/in/%C3%B6mer-can-ba%C5%9Fbo%C4%9Fa-b7940223a)**, or write to omercan.basboga@gmail.com. Open to roles in Istanbul or remote.
 
-The repos below are cleaned-up versions of that work or my own rewrites of the same ideas, all with made-up data and nothing that belongs to the original organisation.
+## Try these in your browser
 
-**Backend / data**
+<table>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="https://omercanbasboga.github.io/campus-portal/"><img src="https://omercanbasboga.github.io/assets/shots/campus-portal.webp" alt="campus-portal landing page"></a>
+      <p><b><a href="https://omercanbasboga.github.io/campus-portal/">campus-portal</a></b><br>
+      Three React apps, built and deployed on their own, joined in the browser with Module Federation: login analytics, staff and student records, an org chart.<br>
+      <sub><a href="https://github.com/Omercanbasboga/campus-portal">code</a>, React, Module Federation, MUI, Highcharts</sub></p>
+    </td>
+    <td width="50%" valign="top">
+      <a href="https://omercanbasboga.github.io/monitoring-hub/"><img src="https://omercanbasboga.github.io/assets/shots/monitoring-hub.webp" alt="monitoring-hub dashboard"></a>
+      <p><b><a href="https://omercanbasboga.github.io/monitoring-hub/">monitoring-hub</a></b><br>
+      Eight gauges, two feeds each. When the primary goes quiet the backup fills the hole and every missed slot is logged.<br>
+      <sub><a href="https://github.com/Omercanbasboga/monitoring-hub">code</a>, Java, Spring Boot, Redis, PostgreSQL, React</sub></p>
+    </td>
+  </tr>
+  <tr>
+    <td width="50%" valign="top">
+      <a href="https://omercanbasboga.github.io/org-management-console/"><img src="https://omercanbasboga.github.io/assets/shots/club-office.webp" alt="Club Office approval queue"></a>
+      <p><b><a href="https://omercanbasboga.github.io/org-management-console/">Club Office</a></b><br>
+      Student clubs with a two-step approval. Sign a request as the club's advisor, switch to the admin, approve it.<br>
+      <sub><a href="https://github.com/Omercanbasboga/org-management-console">console</a> and <a href="https://github.com/Omercanbasboga/org-management-service">service</a>, Spring Boot, Spring Security, React</sub></p>
+    </td>
+    <td width="50%" valign="top">
+      <a href="https://omercanbasboga.github.io/hollowmere/"><img src="https://omercanbasboga.github.io/assets/shots/hollowmere.webp" alt="Hollowmere title screen"></a>
+      <p><b><a href="https://omercanbasboga.github.io/hollowmere/">Hollowmere</a></b><br>
+      A match-3 in a dark-fantasy world I made up. Fill a creature's ward meter to seal it for the rest of the run.<br>
+      <sub><a href="https://github.com/Omercanbasboga/hollowmere">code</a>, JavaScript, with a <a href="https://github.com/Omercanbasboga/hollowmere-liveops">Spring Boot config service</a></sub></p>
+    </td>
+  </tr>
+</table>
 
-- [unit-matcher](https://github.com/Omercanbasboga/unit-matcher) · messy unit names -> one official org tree: rules first, a local LLM for the unsure cases, a review loop it learns from (Python, Ollama, PostgreSQL)
-- [monitoring-hub](https://github.com/Omercanbasboga/monitoring-hub) · one API over four very different sensor feeds, with backup-feed failover, a gap log and a Redis cache ([live dashboard](https://omercanbasboga.github.io/monitoring-hub/)) (Spring Boot, PostgreSQL, Redis, React)
-- [minmax-lttb-downsampler](https://github.com/Omercanbasboga/minmax-lttb-downsampler) · shrink 30k points to 300 without losing the spike you actually care about
-- [org-management-service](https://github.com/Omercanbasboga/org-management-service) · student clubs with a two-step approval flow (advisor, then admin) and roles inside each club (Spring Boot, Spring Security, JPA)
-- [sso-gateway-bff](https://github.com/Omercanbasboga/sso-gateway-bff) · reactive OAuth2/OIDC backend-for-frontend (Spring Cloud Gateway)
-- [installment-scheduler](https://github.com/Omercanbasboga/installment-scheduler) · BNPL style payment plans, mostly about not losing a cent to rounding
-- [tallyup](https://github.com/Omercanbasboga/tallyup) · group expenses settled with as few transfers as possible
+## More code
+
+**Backend and data**
+
+- [unit-matcher](https://github.com/Omercanbasboga/unit-matcher): messy unit names from several HR systems matched to one org tree. Rules first, a local LLM (Qwen on Ollama) for the unsure cases, a person for the rest, and it learns from their answers.
+- [sso-gateway-bff](https://github.com/Omercanbasboga/sso-gateway-bff): reactive OAuth2/OIDC backend-for-frontend. Tokens stay on the server.
+- [minmax-lttb-downsampler](https://github.com/Omercanbasboga/minmax-lttb-downsampler): 30,000 points down to 300 without losing the one spike that matters.
+- [installment-scheduler](https://github.com/Omercanbasboga/installment-scheduler): buy-now-pay-later plans that don't lose a cent to rounding.
+- [tallyup](https://github.com/Omercanbasboga/tallyup): group expenses settled in as few transfers as possible.
 
 **Frontend**
 
-- [campus-portal](https://github.com/Omercanbasboga/campus-portal) · a university admin portal split into three React apps joined with Module Federation: login analytics, staff and student records, an org chart ([live demo](https://omercanbasboga.github.io/campus-portal/))
-- [monitoring-hub-dashboard](https://github.com/Omercanbasboga/monitoring-hub-dashboard) · the first, standalone version of the monitoring-hub charts
-- [iam-admin-console](https://github.com/Omercanbasboga/iam-admin-console) · clients, users, roles and scopes for the gateway
-- [org-management-console](https://github.com/Omercanbasboga/org-management-console) · the console for the service above; switch between advisor and admin and push a request through both signatures ([live demo](https://omercanbasboga.github.io/org-management-console/))
+- [iam-admin-console](https://github.com/Omercanbasboga/iam-admin-console): clients, users, roles and scopes for the gateway; five near-identical screens became one component.
+- [monitoring-hub-dashboard](https://github.com/Omercanbasboga/monitoring-hub-dashboard): the first, standalone version of the monitoring-hub charts.
 
-**Games, for fun**
+**Games**
 
-- [hollowmere](https://omercanbasboga.github.io/hollowmere/) · match-3 where you seal monsters, with a small [live-ops config service](https://github.com/Omercanbasboga/hollowmere-liveops)
-- [hollowmere-vigil](https://omercanbasboga.github.io/hollowmere-vigil/) · short branching text adventure in the same world
+- [hollowmere-vigil](https://omercanbasboga.github.io/hollowmere-vigil/): a branching text RPG in the same world, where most choices are real d20 checks. English and Turkish.
 
-Java · Spring Boot · Spring Batch · Python · PostgreSQL · Redis · MongoDB · React · Node.js · Docker · Ollama
-
-[Website](https://omercanbasboga.github.io) · [LinkedIn](https://www.linkedin.com/in/%C3%B6mer-can-ba%C5%9Fbo%C4%9Fa-b7940223a)
+<sub>Java, Spring Boot, Spring Security, Python, PostgreSQL, Redis, MongoDB, React, MUI, Node.js, Docker, Ollama</sub>
